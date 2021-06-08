@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true jbdiop/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: docker-react-dev
+  env: "Dockerreactdev-env"
+  bucket_name: "elasticbeanstalk-us-west-2-538130761021"
+  bucket_path: "docker-react-dev"
+  on:
+    branch: master
